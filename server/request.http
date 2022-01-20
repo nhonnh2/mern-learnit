@@ -2,7 +2,7 @@ POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-    "username": "nhon",
+    "username": "nhon2",
     "password": "huunhon989"
 }
 ###
@@ -11,6 +11,35 @@ POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "nhon",
+    "username": "nhon2",
     "password": "huunhon989"
 }
+###
+POST http://localhost:5000/api/posts/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWU5NGQ0NTlhMTE5YzcwYjY0NmQ5N2EiLCJpYXQiOjE2NDI2Nzk2MjF9.1kpldTNrEee20FGAzLI_-QDJ-2o7NLLSWCH3aM5FxVY
+
+{
+    "title": "hoc nodejs expressjs",
+    "description": "back-end voi nodejs expressjs",
+    "url":"https://www.youtube.com/watch?v=rgFd17fyM4A",
+    "status": "LEARNING"
+}
+###
+GET http://localhost:5000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWU5NGQ0NTlhMTE5YzcwYjY0NmQ5N2EiLCJpYXQiOjE2NDI2Nzk2MjF9.1kpldTNrEee20FGAzLI_-QDJ-2o7NLLSWCH3aM5FxVY
+###
+
+PUT http://localhost:5000/api/posts/61e94d809a119c70b646d97c/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWU5NGQ0NTlhMTE5YzcwYjY0NmQ5N2EiLCJpYXQiOjE2NDI2Nzk2MjF9.1kpldTNrEee20FGAzLI_-QDJ-2o7NLLSWCH3aM5FxVY
+
+{
+    "title": "hoc full stact mern",
+    "description": "back-end voi nodejs expressjs",
+    "url":"https://www.youtube.com/watch?v=rgFd17fyM4A",
+    "status": "LEARNED"
+}
+###
+DELETE http://localhost:5000/api/posts/61e94d809a119c70b646d97c/delete
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWU5NGQ0NTlhMTE5YzcwYjY0NmQ5N2EiLCJpYXQiOjE2NDI2Nzk2MjF9.1kpldTNrEee20FGAzLI_-QDJ-2o7NLLSWCH3aM5FxVY
