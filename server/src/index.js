@@ -10,6 +10,9 @@ console.log(connectDB());
 
 const app = express();
 
+//use middleware
+app.use(express.json());
+
 //routing
 route(app);
 
