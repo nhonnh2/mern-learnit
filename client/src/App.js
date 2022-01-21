@@ -6,6 +6,8 @@ import Landing from './component/layout/Landing';
 import Auth from './component/views/Auth';
 import LoginForm from './component/auth/LoginForm';
 import RegisterForm from './component/auth/RegisterForm';
+//styles
+import "./App.css"
 
 function App() {
   return (
