@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import AlertMessage from '../layout/AlertMessage';
 
-function LoginForm({ redirectFrom }) {
+function LoginForm() {
   //state alert
   const [alert, setAlert] = useState();
   //context
@@ -20,10 +20,9 @@ function LoginForm({ redirectFrom }) {
     try {
       const loginData = await submitAuth(values, 'login');
       console.log(loginData);
-      if (loginData.success) {
-        redirectFrom();
-      } else {
+      if (!loginData.success) {
         setAlert({ type: 'error', message: loginData.message });
+        setTimeout(() => setAlert(null), 5000);
       }
     } catch (error) {
       console.log(error);

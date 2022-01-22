@@ -2,7 +2,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 //import component
-import Landing from './component/layout/Landing';
 import Auth from './views/Auth';
 import LoginForm from './component/auth/LoginForm';
 import RegisterForm from './component/auth/RegisterForm';
@@ -11,6 +10,7 @@ import Dashboard from './views/Dashboard';
 import RequireAuth from './component/RequireAuth';
 //styles
 import './App.css';
+import About from './views/About';
 
 function App() {
   return (
@@ -32,10 +32,18 @@ function App() {
             }
           />
           <Route
+            path="/about"
+            element={
+              <RequireAuth>
+                <About />
+              </RequireAuth>
+            }
+          />
+          <Route
             path="/"
             element={
               <RequireAuth>
-                <Landing />
+                <Dashboard />
               </RequireAuth>
             }
           />

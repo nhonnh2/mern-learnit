@@ -17,10 +17,9 @@ function RegisterForm({ redirectFrom }) {
     try {
       const registerData = await submitAuth(values, 'register');
       console.log(registerData);
-      if (registerData.success) {
-        redirectFrom();
-      } else {
+      if (!registerData.success) {
         setAlert({ type: 'error', message: registerData.message });
+        setTimeout(() => setAlert(null), 5000);
       }
     } catch (error) {
       console.log(error);

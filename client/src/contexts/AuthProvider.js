@@ -38,6 +38,14 @@ const AuthProvider = ({ children }) => {
       });
     }
   };
+  //logout
+  const logoutUser = () => {
+    localStorage.removeItem(ACCESS_TOKEN_NAME);
+    dispatch({
+      type: 'SET_AUTH',
+      payload: { isAuthenticated: false, user: null },
+    });
+  };
   // App mounted
   useEffect(() => {
     loadUser();
@@ -64,7 +72,7 @@ const AuthProvider = ({ children }) => {
     }
   };
   //context data
-  const authContextData = { submitAuth, authState };
+  const authContextData = { submitAuth, authState, logoutUser };
 
   //return provider
   return (

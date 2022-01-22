@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { Spin } from 'antd';
+import NavbarMenu from '../layout/NavbarMenu';
 
 function RequireAuth({ children }) {
   //context
@@ -21,10 +22,10 @@ function RequireAuth({ children }) {
   return (
     <>
       {isAuthenticated ? (
-        <>
-          <h1>narbar</h1>
-          {children}
-        </>
+        <div className="bg-indigo-200 w-full h-[100vh]">
+          <NavbarMenu />
+          <div className="pt-20">{children}</div>
+        </div>
       ) : (
         <Navigate to={`/auth/login`} state={{ from: location }} replace />
       )}

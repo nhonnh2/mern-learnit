@@ -18,17 +18,11 @@ function Auth({ formAuth: FormAuth }) {
   );
   console.log('path redirect', from);
 
-  let content = (
-    <FormAuth
-      redirectFrom={() => {
-        navigate(from, { replace: true });
-      }}
-    />
-  );
+  let content = <FormAuth />;
 
   //
   if (authLoading) content = <Spin size="large" />;
-  else if (isAuthenticated) return <Navigate to="/dashboard" />;
+  else if (isAuthenticated) return <Navigate to={from} />;
 
   return (
     <>
