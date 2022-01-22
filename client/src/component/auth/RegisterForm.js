@@ -1,12 +1,15 @@
 //import library
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 //import component
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link, useParams } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import AlertMessage from '../layout/AlertMessage';
 
 function RegisterForm({ redirectFrom }) {
+  //state alert
+  const [alert, setAlert] = useState();
   //context
   const { submitAuth } = useContext(AuthContext);
   // form finish and submit
@@ -17,6 +20,7 @@ function RegisterForm({ redirectFrom }) {
       if (registerData.success) {
         redirectFrom();
       } else {
+        setAlert({ type: 'error', message: registerData.message });
       }
     } catch (error) {
       console.log(error);
@@ -33,6 +37,8 @@ function RegisterForm({ redirectFrom }) {
         onFinish={onFinish}
         size="large"
       >
+        {/* //Alert err */}
+        <AlertMessage className="h-[45px] w-[300px] mb-2" info={alert} />
         {/* field username */}
         <Form.Item
           name="username"

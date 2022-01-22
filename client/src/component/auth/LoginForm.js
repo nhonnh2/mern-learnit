@@ -7,8 +7,11 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 //import provider context
 import { AuthContext } from '../../contexts/AuthProvider';
+import AlertMessage from '../layout/AlertMessage';
 
 function LoginForm({ redirectFrom }) {
+  //state alert
+  const [alert, setAlert] = useState();
   //context
   const { submitAuth } = useContext(AuthContext);
 
@@ -20,6 +23,7 @@ function LoginForm({ redirectFrom }) {
       if (loginData.success) {
         redirectFrom();
       } else {
+        setAlert({ type: 'error', message: loginData.message });
       }
     } catch (error) {
       console.log(error);
@@ -36,6 +40,9 @@ function LoginForm({ redirectFrom }) {
         onFinish={onFinish}
         size="large"
       >
+        {/* //Alert err */}
+        <AlertMessage className="h-[45px] w-[300px] mb-2" info={alert} />
+
         {/* field username */}
         <Form.Item
           name="username"
