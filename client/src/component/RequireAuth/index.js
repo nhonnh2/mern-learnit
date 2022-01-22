@@ -22,10 +22,10 @@ function RequireAuth({ children }) {
   return (
     <>
       {isAuthenticated ? (
-        <div className="bg-indigo-200 w-full h-[100vh]">
+        <>
           <NavbarMenu />
           <div className="pt-20">{children}</div>
-        </div>
+        </>
       ) : (
         <Navigate to={`/auth/login`} state={{ from: location }} replace />
       )}

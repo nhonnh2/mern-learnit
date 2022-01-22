@@ -11,44 +11,50 @@ import RequireAuth from './component/RequireAuth';
 //styles
 import './App.css';
 import About from './views/About';
+import PostProvider from './contexts/PostProvider';
 
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/auth/login/" element={<Auth formAuth={LoginForm} />} />
-          <Route
-            path="/auth/register"
-            element={<Auth formAuth={RegisterForm} />}
-          />
+      <PostProvider>
+        <Router>
+          <Routes>
+            <Route
+              path="/auth/login/"
+              element={<Auth formAuth={LoginForm} />}
+            />
+            <Route
+              path="/auth/register"
+              element={<Auth formAuth={RegisterForm} />}
+            />
 
-          <Route
-            path="/dashboard"
-            element={
-              <RequireAuth>
-                <Dashboard />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <RequireAuth>
-                <About />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <RequireAuth>
-                <Dashboard />
-              </RequireAuth>
-            }
-          />
-        </Routes>
-      </Router>
+            <Route
+              path="/dashboard"
+              element={
+                <RequireAuth>
+                  <Dashboard />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/about"
+              element={
+                <RequireAuth>
+                  <About />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/"
+              element={
+                <RequireAuth>
+                  <Dashboard />
+                </RequireAuth>
+              }
+            />
+          </Routes>
+        </Router>
+      </PostProvider>
     </AuthProvider>
   );
 }

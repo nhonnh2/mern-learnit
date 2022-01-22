@@ -1,10 +1,11 @@
 //import library
 import { createContext, useEffect, useReducer } from 'react';
-import authApi from '../apis/authApi';
 //import something..
 import { authReducer } from '../reducers/authReduce';
 import { ACCESS_TOKEN_NAME } from '../settings/constants';
 import setAuthToken from '../utils/setAuthTokent';
+import authApi from '../apis/authApi';
+import { SET_AUTH } from '../types/authTypes';
 
 export const AuthContext = createContext();
 
@@ -25,7 +26,7 @@ const AuthProvider = ({ children }) => {
       const { data } = await authApi.checkUser();
       if (data.success) {
         dispatch({
-          type: 'SET_AUTH',
+          type: SET_AUTH,
           payload: { isAuthenticated: true, user: data.user },
         });
       }
@@ -33,7 +34,7 @@ const AuthProvider = ({ children }) => {
       localStorage.removeItem(ACCESS_TOKEN_NAME);
       setAuthToken(null);
       dispatch({
-        type: 'SET_AUTH',
+        type: SET_AUTH,
         payload: { isAuthenticated: false, user: null },
       });
     }
@@ -42,7 +43,7 @@ const AuthProvider = ({ children }) => {
   const logoutUser = () => {
     localStorage.removeItem(ACCESS_TOKEN_NAME);
     dispatch({
-      type: 'SET_AUTH',
+      type: SET_AUTH,
       payload: { isAuthenticated: false, user: null },
     });
   };

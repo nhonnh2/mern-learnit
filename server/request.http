@@ -20,10 +20,10 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWU5NGQ0NTlhMTE5YzcwYjY0NmQ5N2EiLCJpYXQiOjE2NDI2Nzk2MjF9.1kpldTNrEee20FGAzLI_-QDJ-2o7NLLSWCH3aM5FxVY
 
 {
-    "title": "hoc nodejs expressjs",
-    "description": "back-end voi nodejs expressjs",
+    "title": "nextjs",
+    "description": "hoc framwork nextjs",
     "url":"https://www.youtube.com/watch?v=rgFd17fyM4A",
-    "status": "LEARNING"
+    "status": "TO LEARN"
 }
 ###
 GET http://localhost:5000/api/posts
