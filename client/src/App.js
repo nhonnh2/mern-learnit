@@ -1,23 +1,47 @@
 //import library
 import React from 'react';
-import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 //import component
 import Landing from './component/layout/Landing';
-import Auth from './component/views/Auth';
+import Auth from './views/Auth';
 import LoginForm from './component/auth/LoginForm';
 import RegisterForm from './component/auth/RegisterForm';
+import AuthProvider from './contexts/AuthProvider';
+import Dashboard from './views/Dashboard';
+import RequireAuth from './component/RequireAuth';
 //styles
-import "./App.css"
+import './App.css';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/auth/login" element={<Auth><LoginForm/></Auth>} />
-        <Route path="/auth/register" element={<Auth><RegisterForm/></Auth>} />
-        <Route path="/" element={<Landing/>} />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/auth/login/" element={<Auth formAuth={LoginForm} />} />
+          <Route
+            path="/auth/register"
+            element={<Auth formAuth={RegisterForm} />}
+          />
+
+          <Route
+            path="/dashboard"
+            element={
+              <RequireAuth>
+                <Dashboard />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <RequireAuth>
+                <Landing />
+              </RequireAuth>
+            }
+          />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 

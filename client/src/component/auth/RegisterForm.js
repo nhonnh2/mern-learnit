@@ -1,13 +1,26 @@
 //import library
-import React from 'react';
+import React, { useContext } from 'react';
 //import component
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 
-function RegisterForm() {
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+function RegisterForm({ redirectFrom }) {
+  //context
+  const { submitAuth } = useContext(AuthContext);
+  // form finish and submit
+  const onFinish = async (values) => {
+    try {
+      const registerData = await submitAuth(values, 'register');
+      console.log(registerData);
+      if (registerData.success) {
+        redirectFrom();
+      } else {
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>
@@ -89,7 +102,7 @@ function RegisterForm() {
             htmlType="submit"
             className="login-form-button mt-5"
           >
-            Log in
+            Register
           </Button>
         </Form.Item>
         {/* bottom-form */}

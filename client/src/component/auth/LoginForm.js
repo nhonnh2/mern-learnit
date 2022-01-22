@@ -1,13 +1,29 @@
 //import library
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 //import component
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+//import provider context
+import { AuthContext } from '../../contexts/AuthProvider';
 
-function LoginForm() {
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+function LoginForm({ redirectFrom }) {
+  //context
+  const { submitAuth } = useContext(AuthContext);
+
+  // form finish and submit
+  const onFinish = async (values) => {
+    try {
+      const loginData = await submitAuth(values, 'login');
+      console.log(loginData);
+      if (loginData.success) {
+        redirectFrom();
+      } else {
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>

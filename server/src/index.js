@@ -1,8 +1,9 @@
 //require library
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 //require resources
-const { connectDB } = require('./config/db')
+const { connectDB } = require('./config/db');
 const route = require('./routes/index');
 
 //connect database
@@ -12,6 +13,7 @@ const app = express();
 
 //use middleware
 app.use(express.json());
+app.use(cors());
 
 //routing
 route(app);

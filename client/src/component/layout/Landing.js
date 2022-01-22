@@ -1,7 +1,11 @@
 import React from 'react';
 
 function Landing() {
-  return <div></div>;
+  return (
+    <div>
+      <h1>Lauding</h1>
+    </div>
+  );
 }
 
 export default Landing;
