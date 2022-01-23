@@ -24,8 +24,30 @@ const PostProvider = ({ children }) => {
       dispatch({ type: POSTS_LOADED_FAILED });
     }
   };
+  // add post
+  const addPost = async (dataForm) => {
+    try {
+      const { data } = await postApi.create(dataForm);
+      if (data.success) {
+        await getPosts();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  //edit post
+  const editPost = async (dataForm, id) => {
+    try {
+      const { data } = await postApi.update(dataForm, id);
+      if (data.success) {
+        await getPosts();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   //context data
-  const postContextData = { postState, getPosts };
+  const postContextData = { postState, getPosts, addPost, editPost };
   //return provider
   return (
     <PostContext.Provider value={postContextData}>

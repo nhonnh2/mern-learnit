@@ -3,6 +3,7 @@ import { Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { Spin } from 'antd';
 import NavbarMenu from '../layout/NavbarMenu';
+import { PlusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
 function RequireAuth({ children }) {
   //context

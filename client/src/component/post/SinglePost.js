@@ -3,31 +3,34 @@ import {
   EditOutlined,
   PlaySquareOutlined,
 } from '@ant-design/icons';
-import { Card, Tag } from 'antd';
+import { Button, Card, Tag } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function SinglePost({ post: { _id, status, title, description, url } }) {
+function SinglePost({
+  post: { _id, status, title, description, url },
+  showModalEdit,
+}) {
   return (
     <>
       <Card
         title={title}
-        className={`g:w-[20%] md:w-[30%] sm:w-[47%] w-[94%]  border-l-[${
-          status === 'LEARNED'
-            ? '#389e0d'
-            : status === 'LEARNING'
-            ? '#d48806'
-            : '#d4380d'
-        }] border-l-[3px]`}
+        className="g:w-[20%] md:w-[30%] sm:w-[47%] w-[94%]"
         hoverable
         extra={
           <>
-            <Link to="" className="mr-4">
+            <Button className="border-0 mr-3" size="small">
               <DeleteOutlined />
-            </Link>
-            <Link to="">
+            </Button>
+            <Button
+              className="border-0"
+              size="small"
+              onClick={() => {
+                showModalEdit();
+              }}
+            >
               <EditOutlined />
-            </Link>
+            </Button>
           </>
         }
         style={{ width: 300 }}
@@ -46,7 +49,11 @@ function SinglePost({ post: { _id, status, title, description, url } }) {
         </Tag>
         <div className="flex justify-between">
           <p className="text-gray-500 w-[80%]">{description}</p>
-          <a href={url} target="blank" className="text-[20px] text-gray-500">
+          <a
+            href={url}
+            target="blank"
+            className="text-[20px] mr-6 sm:mr-0 text-gray-500"
+          >
             <PlaySquareOutlined />
           </a>
         </div>

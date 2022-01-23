@@ -5,10 +5,10 @@ const postApi = {
     return callApi('posts', 'GET');
   },
   create(data) {
-    return callApi('creposts/create', 'POST', data);
+    return callApi('posts/create', 'POST', data);
   },
-  update(data) {
-    return callApi(`posts/${data._id}/update`, 'POST', data);
+  update(data, id) {
+    return callApi(`posts/${id}/update`, 'PUT', data);
   },
   delete(id) {
     return callApi(`posts/${id}/delete`);

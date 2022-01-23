@@ -28,10 +28,10 @@ function RegisterForm({ redirectFrom }) {
   return (
     <>
       <Form
-        name="normal_login"
+        name="normal_register"
         className="login-form mt-4 flex flex-col items-center"
         initialValues={{
-          remember: true,
+          remember: false,
         }}
         onFinish={onFinish}
         size="large"
