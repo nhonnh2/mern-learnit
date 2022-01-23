@@ -11,7 +11,7 @@ const postApi = {
     return callApi(`posts/${id}/update`, 'PUT', data);
   },
   delete(id) {
-    return callApi(`posts/${id}/delete`);
+    return callApi(`posts/${id}/delete`, 'DELETE');
   },
 };
 

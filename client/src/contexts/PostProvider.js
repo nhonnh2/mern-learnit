@@ -46,8 +46,25 @@ const PostProvider = ({ children }) => {
       console.log(error);
     }
   };
+  //delete post
+  const deletePost = async (id) => {
+    try {
+      const { data } = await postApi.delete(id);
+      if (data.success) {
+        await getPosts();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   //context data
-  const postContextData = { postState, getPosts, addPost, editPost };
+  const postContextData = {
+    postState,
+    getPosts,
+    addPost,
+    editPost,
+    deletePost,
+  };
   //return provider
   return (
     <PostContext.Provider value={postContextData}>

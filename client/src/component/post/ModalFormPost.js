@@ -40,6 +40,7 @@ function ModalFormPost({
         okText={`${typeModal === 'Add' ? typeModal : 'Save'}`}
         okButtonProps={{ style: { background: '#1890ff', color: 'white' } }}
         className="modal_post top-6 md:top-[90px] lg:top-[100px]"
+        getContainer={false}
       >
         <Form name="form_post" layout="vertical" form={form}>
           <Form.Item

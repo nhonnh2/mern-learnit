@@ -33,9 +33,6 @@ function LoginForm() {
       <Form
         name="normal_login"
         className="login-form mt-4 flex flex-col items-center"
-        initialValues={{
-          remember: false,
-        }}
         onFinish={onFinish}
         size="large"
       >

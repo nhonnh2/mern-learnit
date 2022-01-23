@@ -30,9 +30,6 @@ function RegisterForm({ redirectFrom }) {
       <Form
         name="normal_register"
         className="login-form mt-4 flex flex-col items-center"
-        initialValues={{
-          remember: false,
-        }}
         onFinish={onFinish}
         size="large"
       >

@@ -46,7 +46,7 @@ function NavbarMenu() {
             {open ? <CloseOutlined /> : <MenuOutlined />}
           </div>
           <ul
-            className={`shadow md:shadow-none md:flex md:items-center md:pb-0 pb-12 absolute md:static 
+            className={`shadow-xl md:shadow-none md:flex md:items-center md:pb-0 pb-12 absolute md:static 
                     bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 
                     pl-9 transition-all duration-500 ease-in ${
                       open

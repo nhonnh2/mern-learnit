@@ -2,15 +2,35 @@ import {
   DeleteOutlined,
   EditOutlined,
   PlaySquareOutlined,
+  ExclamationCircleOutlined,
 } from '@ant-design/icons';
-import { Button, Card, Tag } from 'antd';
-import React from 'react';
+import { Button, Card, Tag, Modal } from 'antd';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { PostContext } from '../../contexts/PostProvider';
+
+const { confirm } = Modal;
 
 function SinglePost({
   post: { _id, status, title, description, url },
   showModalEdit,
 }) {
+  //context
+  const { deletePost } = useContext(PostContext);
+  //confirm delete
+  function showDeleteConfirm() {
+    confirm({
+      title: 'Are you sure delete this post?',
+      icon: <ExclamationCircleOutlined />,
+      content: 'Data cannot be recovered !!!',
+      okText: 'Yes',
+      okType: 'danger',
+      cancelText: 'No',
+      onOk() {
+        deletePost(_id);
+      },
+    });
+  }
   return (
     <>
       <Card
@@ -19,7 +39,13 @@ function SinglePost({
         hoverable
         extra={
           <>
-            <Button className="border-0 mr-3" size="small">
+            <Button
+              className="border-0 mr-3"
+              size="small"
+              onClick={() => {
+                showDeleteConfirm();
+              }}
+            >
               <DeleteOutlined />
             </Button>
             <Button

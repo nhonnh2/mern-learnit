@@ -65,10 +65,19 @@ function Dashboard() {
             ghost
             className="flex items-center mt-3"
             icon={<PlusOutlined />}
+            onClick={() => {
+              handleModelShow('Add');
+            }}
           >
             LearnIt!
           </Button>
         </Card>
+        <ModalFormPost
+          isVisibleModal={isVisibleModal}
+          handleModalClose={handleModalClose}
+          typeModal={typeModal}
+          dataFormModal={dataFormModal}
+        />
       </div>
     );
   }
