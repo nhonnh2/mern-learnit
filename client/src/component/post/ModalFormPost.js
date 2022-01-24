@@ -3,11 +3,17 @@ import TextArea from 'antd/lib/input/TextArea';
 import React, { useContext, useEffect } from 'react';
 import { PostContext } from '../../contexts/PostProvider';
 
+//function check variable is empty or spaces
+const isEmptyOrSpaces = (str) => {
+  return str === null || str.match(/^ *$/) !== null;
+};
+
 function ModalFormPost({
   isVisibleModal,
   handleModalClose,
   typeModal,
   dataFormModal,
+  ...rest
 }) {
   //context
   const { addPost, editPost } = useContext(PostContext);
@@ -15,9 +21,9 @@ function ModalFormPost({
   //sumit modal form
   const submitModalForm = () => {
     form.submit();
-    const validate = form.isFieldValidating('title');
+    const valueValidate = form.getFieldValue('title');
     const values = form.getFieldsValue();
-    if (validate) {
+    if (!isEmptyOrSpaces(valueValidate)) {
       if (typeModal === 'Add') {
         addPost(values);
       } else if (typeModal === 'Edit') {
@@ -26,13 +32,16 @@ function ModalFormPost({
       handleModalClose();
     }
   };
+
   //effect
   useEffect(() => {
     form.setFieldsValue(dataFormModal);
-  }, [dataFormModal]);
+  }, [isVisibleModal]);
+
   return (
-    <>
+    <div>
       <Modal
+        {...rest}
         title={`${typeModal} Post`}
         visible={isVisibleModal}
         onOk={submitModalForm}
@@ -40,7 +49,7 @@ function ModalFormPost({
         okText={`${typeModal === 'Add' ? typeModal : 'Save'}`}
         okButtonProps={{ style: { background: '#1890ff', color: 'white' } }}
         className="modal_post top-6 md:top-[90px] lg:top-[100px]"
-        getContainer={false}
+        forceRender
       >
         <Form name="form_post" layout="vertical" form={form}>
           <Form.Item
@@ -76,7 +85,7 @@ function ModalFormPost({
           </Form.Item>
         </Form>
       </Modal>
-    </>
+    </div>
   );
 }
 

@@ -1,8 +1,8 @@
 //import library
-import { createContext, useEffect, useReducer } from 'react';
+import { createContext, useReducer } from 'react';
+import postApi from '../apis/postApi';
 //import something..
 import { postReducer } from '../reducers/postReducer';
-import postApi from '../apis/postApi';
 import { POSTS_LOADED_FAILED, POSTS_LOADED_SUCCESS } from '../types/postTypes';
 
 export const PostContext = createContext();
@@ -64,6 +64,7 @@ const PostProvider = ({ children }) => {
     addPost,
     editPost,
     deletePost,
+    dispatch,
   };
   //return provider
   return (

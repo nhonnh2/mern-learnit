@@ -1,9 +1,9 @@
 //import library
-import React, { useContext, useState } from 'react';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
 //import component
-import { Form, Input, Button, Checkbox } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { Link, useParams } from 'react-router-dom';
+import { Button, Form, Input } from 'antd';
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import AlertMessage from '../layout/AlertMessage';
 

@@ -1,7 +1,7 @@
-import React, { useContext, useMemo } from 'react';
-import { AuthContext } from '../contexts/AuthProvider';
-import { Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { Spin } from 'antd';
+import React, { useContext, useMemo } from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthProvider';
 
 function Auth({ formAuth: FormAuth }) {
   //context
@@ -10,7 +10,6 @@ function Auth({ formAuth: FormAuth }) {
   } = useContext(AuthContext);
   //navigate
   const location = useLocation();
-  const navigate = useNavigate();
   // path redirect
   const from = useMemo(
     () => location.state?.from?.pathname || '/',

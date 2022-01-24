@@ -1,12 +1,11 @@
 import {
   DeleteOutlined,
   EditOutlined,
-  PlaySquareOutlined,
   ExclamationCircleOutlined,
+  PlaySquareOutlined,
 } from '@ant-design/icons';
-import { Button, Card, Tag, Modal } from 'antd';
+import { Button, Card, Modal, Tag } from 'antd';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { PostContext } from '../../contexts/PostProvider';
 
 const { confirm } = Modal;
@@ -14,6 +13,7 @@ const { confirm } = Modal;
 function SinglePost({
   post: { _id, status, title, description, url },
   showModalEdit,
+  ...rest
 }) {
   //context
   const { deletePost } = useContext(PostContext);
@@ -34,8 +34,9 @@ function SinglePost({
   return (
     <>
       <Card
+        {...rest}
         title={title}
-        className="g:w-[20%] md:w-[30%] sm:w-[47%] w-[94%]"
+        className="g:w-[20%] md:w-[30%] sm:w-[47%] w-[94%] transition-all duration-300 ease-in  "
         hoverable
         extra={
           <>
@@ -74,7 +75,9 @@ function SinglePost({
           {status}
         </Tag>
         <div className="flex justify-between">
-          <p className="text-gray-500 w-[80%]">{description}</p>
+          <p className="text-gray-500 w-[85%] inline-block whitespace-nowrap overflow-hidden truncate ...">
+            {description}
+          </p>
           <a
             href={url}
             target="blank"
