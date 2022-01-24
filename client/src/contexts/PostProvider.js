@@ -3,7 +3,11 @@ import { createContext, useReducer } from 'react';
 import postApi from '../apis/postApi';
 //import something..
 import { postReducer } from '../reducers/postReducer';
-import { POSTS_LOADED_FAILED, POSTS_LOADED_SUCCESS } from '../types/postTypes';
+import {
+  POSTS_LOADED_FAILED,
+  POSTS_LOADED_SUCCESS,
+  POSTS_LOADING,
+} from '../types/postTypes';
 
 export const PostContext = createContext();
 
@@ -16,6 +20,7 @@ const PostProvider = ({ children }) => {
   //get all posts
   const getPosts = async () => {
     try {
+      dispatch({ type: POSTS_LOADING });
       const { data } = await postApi.getPosts();
       if (data.success) {
         dispatch({ type: POSTS_LOADED_SUCCESS, payload: data.posts });
