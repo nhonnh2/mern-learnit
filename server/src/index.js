@@ -1,3 +1,4 @@
+require('dotenv').config();
 //require library
 const express = require('express');
 const mongoose = require('mongoose');
@@ -18,6 +19,6 @@ app.use(cors());
 //routing
 route(app);
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`server started on ports ${PORT}`));

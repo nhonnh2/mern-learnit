@@ -1,1 +1,1 @@
-export const BASE_URL_API = 'http://localhost:5000/api';
+export const BASE_URL_API = 'https://obscure-anchorage-08968.herokuapp.com/api';
